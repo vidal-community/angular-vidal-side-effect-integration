@@ -14,8 +14,8 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const vidalSideEffectElement = this.vidalSideEffectElementRef.nativeElement as VidalSideEffect;
-    vidalSideEffectElement.sideEffectsSupplier = (url) => fetch('http://localhost:8088' + url);
-    vidalSideEffectElement.drugIds = ['vidal://product/19649'];
+    vidalSideEffectElement.sideEffectsSupplier = (url) => fetch('http://2021-06.dockersw.vidal.net' + url);
+    vidalSideEffectElement.drugIds = ['vidal://product/18221','vidal://product/19649'];
   }
 
 }
