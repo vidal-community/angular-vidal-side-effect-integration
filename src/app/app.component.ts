@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRef, ViewRef} from '@angular/core';
-import {VidalSideEffect} from '@vidal-community/vidal-side-effect';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {VidalRecoClic} from '@vidal-community/vidal-web-components';
+import {OutPutProduct} from '@vidal-community/vidal-web-components/vidal-reco-clic/models/out-put-product';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,18 @@ import {VidalSideEffect} from '@vidal-community/vidal-side-effect';
 export class AppComponent implements AfterViewInit {
   title = 'demo-integration-web-component';
 
-  @ViewChild('vse')
-  vidalSideEffectElementRef : ElementRef;
+  @ViewChild('vrc')
+  vidalRecoClicElementRef: ElementRef;
 
   ngAfterViewInit(): void {
-    const vidalSideEffectElement = this.vidalSideEffectElementRef.nativeElement as VidalSideEffect;
-    vidalSideEffectElement.sideEffectsSupplier = (url) => fetch('http://2021-06.dockersw.vidal.net' + url);
-    vidalSideEffectElement.drugIds = ['vidal://product/18221','vidal://product/19649'];
+    const vidalRecoClicElement = this.vidalRecoClicElementRef.nativeElement as VidalRecoClic;
+    vidalRecoClicElement.dataFetchingSupplier = (url) => fetch('//recoclic.dockersw2.vidal.fr' + url);
+    vidalRecoClicElement.recoId = 1478;
+    vidalRecoClicElement.outputProductEvent = this.printOutput;
+  }
+
+  printOutput(outputProduct: OutPutProduct): void {
+    console.log(outputProduct);
   }
 
 }

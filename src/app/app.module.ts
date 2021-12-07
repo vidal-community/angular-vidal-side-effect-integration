@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import '@vidal-community/vidal-side-effect';
-
+import '@vidal-community/vidal-web-components';
 import { AppComponent } from './app.component';
 
 @NgModule({
